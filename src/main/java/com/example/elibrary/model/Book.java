@@ -1,5 +1,6 @@
 package com.example.elibrary.model;
 
+import hirondelle.date4j.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,8 +20,8 @@ public class Book {
     private List<Author> authors;
     private List<String> authorIds;
     private List<String> genresIds;
-    private String borrowedByUser;
-
+    private String borrowedByUserId;
+    private DateTime returnDate;
 
     public Book(String title, String description, int yearOfPublish, List<String> genresIds, List<String> authorIds) {
         this.title = title;
@@ -28,6 +29,7 @@ public class Book {
         this.yearOfPublish = yearOfPublish;
         this.genresIds = genresIds;
         this.authorIds = authorIds;
+        this.setBorrowedByUserId("avalaible");
     }
 
     public String getTitle() {
@@ -44,6 +46,22 @@ public class Book {
 
     public List<String> getAuthorIds() {
         return authorIds;
+    }
+
+    public String getBorrowedByUserId() {
+        return borrowedByUserId;
+    }
+
+    public void setBorrowedByUserId(String borrowedByUserId) {
+        this.borrowedByUserId = borrowedByUserId;
+    }
+
+    public DateTime getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(DateTime returnDate) {
+        this.returnDate = returnDate;
     }
 
     public void setAuthorIds(List<String> authorIds) {

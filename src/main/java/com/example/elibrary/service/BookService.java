@@ -1,8 +1,11 @@
 package com.example.elibrary.service;
 
 import com.example.elibrary.model.Book;
+import com.example.elibrary.model.User;
 import com.example.elibrary.repository.BookRepository;
+import org.apache.logging.log4j.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +19,7 @@ public class BookService {
     GenreService genreService;
     @Autowired
     AuthorService authorService;
+
 
     public Book addBook(Book book) {
         Book _book = new Book(book.getTitle(), book.getDescription(), book.getYearOfPublish(), book.getGenresIds(), book.getAuthorIds());
@@ -82,6 +86,22 @@ public class BookService {
         List<Book> books = bookRepository.findBookByTitleContaining(string);
         return books;
     }
+/*
+    public Message borrowBook(String userID, String bookId) {
+        Optional<Book> optionalBook = bookRepository.findById(bookId);
+
+        Book book;
+        if (!optionalBook.isEmpty()) {
+            book = optionalBook.get();
+        } else {
+            return null;
+        }
+        if (book.getBorrowedByUserId() != "avalaible"){
+            Optional<User> optionalUser =
+        }
+    }
+*/
 }
+
 
 
