@@ -1,13 +1,11 @@
 package com.example.elibrary.service;
 
-import com.example.elibrary.model.Author;
 import com.example.elibrary.model.Genre;
 import com.example.elibrary.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 

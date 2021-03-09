@@ -68,6 +68,16 @@ public class BookController {
         }
     }
 
+    @GetMapping("books/byTitle/{string}")
+    public ResponseEntity<List<Book>> findBooksByTitle(@PathVariable String string) {
+        List<Book> books = bookService.findBookByTitle(string);
+        if (!books.isEmpty()) {
+            return new ResponseEntity<>(books, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+    }
+
     @DeleteMapping("/books")
     public void deleteAllBooks() {
         bookService.deleteAllBooks();

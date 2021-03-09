@@ -21,6 +21,7 @@ public class BookService {
         Book _book = new Book(book.getTitle(), book.getDescription(), book.getYearOfPublish(), book.getGenresIds(), book.getAuthorIds());
         _book.setGenres(genreService.findGenresFromListOfIds(_book.getGenresIds()));
         _book.setAuthors(authorService.findAuthorsFromListOfIds(_book.getAuthorIds()));
+
         return bookRepository.save(_book);
     }
 
@@ -76,5 +77,11 @@ public class BookService {
     public void deleteAllBooks() {
         bookRepository.deleteAll();
     }
+
+    public List<Book> findBookByTitle(String string) {
+        List<Book> books = bookRepository.findBookByTitleContaining(string);
+        return books;
+    }
 }
+
 

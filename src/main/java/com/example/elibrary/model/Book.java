@@ -3,13 +3,15 @@ package com.example.elibrary.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Document(collection = "books")
 public class Book {
     @Id
     private String id;
-
+    @NotNull(message = "Book title is required")
     private String title;
     private String description;
     private int yearOfPublish;
@@ -17,6 +19,7 @@ public class Book {
     private List<Author> authors;
     private List<String> authorIds;
     private List<String> genresIds;
+    private String borrowedByUser;
 
 
     public Book(String title, String description, int yearOfPublish, List<String> genresIds, List<String> authorIds) {
