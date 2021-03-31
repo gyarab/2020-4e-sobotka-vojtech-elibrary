@@ -1,0 +1,29 @@
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Year of Publish</th>
+        <th scope="col">Authors</th>
+        <th scope="col">Genres</th>
+        <th scope="col">Return Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books" class="table table-striped">
+        <td>{{ book.title }}</td>
+        <td>{{ book.dateOfPublish }}</td>
+        <td>{{ book.authors }}</td>
+        <td>{{ book.genres }}</td>
+        <td>{{ book.returnDate }}</td>
+
+        <td>{{ book.belongsToUser }}</td>
+        <td>
+          <button type="button" class="btn btn-info" (click)="details(book.id)">
+            Detail
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

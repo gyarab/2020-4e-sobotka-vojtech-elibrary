@@ -1,0 +1,29 @@
+<div class="container">
+    <form [formGroup]="genreControl" (ngSubmit)="genreSubmit()">
+      <div class="form-group">
+        <label for="genre"> Genre: </label>
+        <br />
+        <input
+          id="genre"
+          type="text"
+          formControlName="genre"
+          placeholder="Fantasy"
+        />
+        <button type="submit">Create genre!</button>
+      </div>
+    </form>
+    <form [formGroup]="authorControl" (ngSubmit)="authorSubmit()">
+      <div class="form-group">
+        <label for="author"> Author: </label>
+        <br />
+        <input
+          id="author"
+          type="text"
+          formControlName="author"
+          placeholder="Tolkien"
+        />
+        <button type="submit">Create author!</button>
+      </div>
+    </form>
+  </div>
+  

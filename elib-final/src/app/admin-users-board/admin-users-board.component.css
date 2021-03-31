@@ -1,0 +1,22 @@
+table {
+  border-collapse: collapse;
+}
+td {
+  padding: 1em;
+  border: 1px solid black;
+}
+html,
+body,
+.container-table {
+  height: 100%;
+}
+.container-table {
+  width: 100vw;
+  height: 150px;
+}
+.vertical-center-row {
+  margin: auto;
+  width: 30%;
+  padding: 63px;
+  text-align: center;
+}

@@ -1,0 +1,40 @@
+<div class="container container-table">
+  <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="search()">
+    <div class="form-group mx-sm-3 mb-2"><label>Search by username:</label></div>
+    <div class="form-group mx-sm-3 mb-2">
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="karlos123"
+        formControlName="input"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+  </form>
+  <table class="table-striped">
+    <tr *ngFor="let user of users">
+      <td>{{ user.username }}</td>
+      <td>{{ user.id }}</td>
+      <td>{{ user.roles[0].name }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="deleteUser(user.username)"
+        >
+          Delete this User!
+        </button>
+      </td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="setAdmin(user.id)"
+        >
+          Set user as admin!
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

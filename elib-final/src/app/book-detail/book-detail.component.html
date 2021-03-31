@@ -1,0 +1,31 @@
+<div class="container">
+  <table style="width: 80%" class="table table-striped center">
+    <tbody>
+      <tr>
+        <td>Title :</td>
+        <td>{{ book.title }}</td>
+      </tr>
+      <tr>
+        <td>Describtion :</td>
+        <td>{{ book.description }}</td>
+      </tr>
+      <tr>
+        <td>Authors :</td>
+        <td>{{ book.authors }}</td>
+      </tr>
+      <tr>
+        <td>Genres :</td>
+        <td>{{ book.genres }}</td>
+      </tr>
+      <tr>
+        <td>Avaliability :</td>
+        <td>{{ available }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="isBorrowable">
+    <button type="button" class="btn btn-info" (click)="borrowBook()">
+      Borrow this Book!
+    </button>
+  </div>
+</div>

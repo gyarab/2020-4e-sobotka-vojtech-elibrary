@@ -1,0 +1,95 @@
+<div class="container">
+  <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="search()">
+    <div class="form-group mx-sm-3 mb-2"><label>Search by title:</label></div>
+    <div class="form-group mx-sm-3 mb-2">
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="Harry Potter..."
+        formControlName="input"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+  </form>
+  <label>Genres:</label>
+  <ng-multiselect-dropdown
+    [placeholder]="'Fantasy'"
+    [settings]="dropdownSettings"
+    [data]="genreList"
+    [(ngModel)]="selectedGenres"
+    (onSelect)="onItemSelect($event)"
+    (onSelectAll)="onSelectAll($event)"
+  >
+  </ng-multiselect-dropdown
+  ><br />
+  <label>Authors:</label>
+  <ng-multiselect-dropdown
+    [placeholder]="'J. K. Rowling'"
+    [settings]="dropdownSettings_2"
+    [data]="authorList"
+    [(ngModel)]="selectedAuthors"
+    (onSelect)="onItemSelect($event)"
+    (onSelectAll)="onSelectAll($event)"
+  ></ng-multiselect-dropdown
+  ><br />
+  <button type="button" class="btn btn-info" (click)="doFilter()">
+    Filter Books
+  </button>
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Year of Publish</th>
+          <th scope="col">Authors</th>
+          <th scope="col">Genres</th>
+          <th scope="col">Detail</th>
+          <div *ngIf="isAdmin">
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+          </div>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books" class="table table-striped">
+          <td>{{ book.title }}</td>
+          <td>{{ book.dateOfPublish }}</td>
+          <td>{{ book.authors }}</td>
+          <td>{{ book.genres }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-info"
+              (click)="details(book.id)"
+            >
+              Detail
+            </button>
+          </td>
+          <div *ngIf="isAdmin">
+            <td>
+              <button
+                *ngIf="isAdmin"
+                type="button"
+                class="btn btn-danger"
+                (click)="delete(book.id)"
+              >
+                Delete
+              </button>
+            </td>
+            <td>
+              <button
+                *ngIf="isAdmin"
+                type="button"
+                class="btn btn-warning"
+                (click)="update(book.id)"
+              >
+                Update
+              </button>
+            </td>
+          </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
