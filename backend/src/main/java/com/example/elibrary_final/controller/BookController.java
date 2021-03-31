@@ -37,6 +37,7 @@ public class BookController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
     @GetMapping("/books/byDateOfPublishAsc")
     public ResponseEntity<List<Book>> getBooksByDateOfPublishAsc() {
         List<Book> books = bookRepository.findByOrderByDateOfPublishAsc();
@@ -47,8 +48,8 @@ public class BookController {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
     @GetMapping("/books")
+    @PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
     public ResponseEntity<? extends Object> findAllBooks() {
         List<Book> bookList = bookRepository.findAll();
         if (!bookList.isEmpty()) {
@@ -70,6 +71,7 @@ public class BookController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
     @GetMapping("/books/byAuthor")
     public ResponseEntity<List<Book>> findBooksByAuthor(@RequestParam String author) {
         List<Book> bookList = bookRepository.findByAuthorsContaining(author);
@@ -80,6 +82,7 @@ public class BookController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
     @GetMapping("/books/byGenre")
     public ResponseEntity<List<Book>> findBooksByGenre(@RequestParam String genre) {
         List<Book> bookList = bookRepository.findByGenresContaining(genre);
@@ -90,6 +93,7 @@ public class BookController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
     @GetMapping("/books/find/{input}")
     public ResponseEntity<List<Book>> findBookByString(@PathVariable String input) {
         List<Book> bookList = bookRepository.findByTitleContaining(input);
@@ -101,6 +105,7 @@ public class BookController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
     @PostMapping("/books/findByParameters")
     public ResponseEntity<List<Book>> filterBooks(@RequestBody FilterReq filterReq) {
         String[] authors = filterReq.getAuthors();
