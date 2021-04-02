@@ -1,4 +1,6 @@
 # 2020-4e-sobotka-vojtech-elibrar
+Projekt byl odevzdán včas pouze bylo dopněno v době odevzdani chybějici zadana viz historie commitu
+
 Ve složce elib-final je frontend.
 Ve složce backend je backend.
 
